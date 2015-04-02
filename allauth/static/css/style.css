@@ -1,0 +1,10 @@
+.logged-in {
+    background: gainsboro url("/static/img/4-Findly-Login.jpg") no-repeat center 80px;
+}
+.logged-out {
+    background: gainsboro url("/static/img/unnamed.jpg") no-repeat center 30px;
+    background-size: 90%;
+}
+.pull-right {
+    float:right;
+}
