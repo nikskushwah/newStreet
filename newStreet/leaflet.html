@@ -1,0 +1,37 @@
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title></title>
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
+  <style>
+    body { margin:0; padding:0; }
+    .map { height: 100%; top:0; bottom:0; width:100%; }
+  </style>
+</head>
+<body>
+  <div><button>Click Me</button></div>
+<div id='map-leaflet' class='map'> </div>
+<script>
+L.mapbox.accessToken = 'pk.eyJ1IjoibmlraXRhMDgiLCJhIjoiOWdtQVZCRSJ9.3NjNdwq3rqvfH8276ESiag';
+var mapLeaflet = L.mapbox.map('map-leaflet','nikita08.lj9ankd8')
+  .setView([37.8, -96], 4)
+var i=0;
+//var x=38.913184
+//var y=-77.031952
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
+for(i=0;i<10;i++){
+        var x= getRandomArbitrary(38.913184,-77.031952);
+        var y= getRandomArbitrary(38.913184,-77.031952);
+        L.marker([x,y]).addTo(mapLeaflet);
+        //x++;
+        //y++;
+        //L.marker([37.775408,-122.413682]).addTo(mapLeaflet);
+}
+//L.mapbox.map('mapbox.satellite');
+mapLeaflet.scrollWheelZoom.disable();
+</script>
+</body>
+</html>
