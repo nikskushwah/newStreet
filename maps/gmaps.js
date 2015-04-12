@@ -29,7 +29,7 @@ function initialize() {
       var longitude = event.latLng.lng();
       console.log( latitude + ', ' + longitude );
   });
-  //update what if user doesnot allow to track the location
+   //update what if user doesnot allow to track the location
   if(!navigator.geolocation){
     var infowindow = new google.maps.InfoWindow({
       map: map,
