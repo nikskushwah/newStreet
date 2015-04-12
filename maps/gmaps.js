@@ -19,25 +19,28 @@ function initialize() {
     }, function() {
       handleNoGeolocation(true);
     });
-  } else {
-    // Browser doesn't support Geolocation
-    handleNoGeolocation(false);
-  }
-  //this gives the latitude and longitude on clicking.
-  google.maps.event.addListener(map, "click", function eventer (event) {
+    //this gives the latitude and longitude on clicking.
+    google.maps.event.addListener(map, "click", function eventer (event) {
       var latitude = event.latLng.lat();
       var longitude = event.latLng.lng();
       console.log( latitude + ', ' + longitude );
   });
-   //update what if user doesnot allow to track the location
-  if(!navigator.geolocation){
-    var infowindow = new google.maps.InfoWindow({
-      map: map,
-      position: new google.maps.LatLng(60,105),
-      content: 'Right now you are here'
-    });
-  }
+  } else {
+    // Browser doesn't support Geolocation
+    handleNoGeolocation(false);
+   }
+  //update what if user doesnot allow to track the location
+    /*navigator.geolocation.getCurrentPosition(
+    function (error) { 
+      if (error.code == error.PERMISSION_DENIED)
+          console.log("you denied me :-(");
+          var infowindow = new google.maps.InfoWindow({
+          map: map,
+          position: new google.maps.LatLng(60,105),
+          content: 'Track now'
+    });*/
 }
+//when geolocation gives an error
 function handleNoGeolocation(errorFlag) {
   if (errorFlag) {
     var content = 'Error: The Geolocation service failed.';
@@ -53,6 +56,12 @@ function handleNoGeolocation(errorFlag) {
 
   var infowindow = new google.maps.InfoWindow(options);
   map.setCenter(options.position);
+  //this gives the latitude and longitude on clicking.
+  google.maps.event.addListener(map, "click", function eventer (event) {
+      var latitude = event.latLng.lat();
+      var longitude = event.latLng.lng();
+      console.log( latitude + ', ' + longitude );
+  });
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 
