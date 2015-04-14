@@ -1,0 +1,76 @@
+from django.shortcuts import render, render_to_response
+from django.conf.urls import include, url, patterns
+from django.http import HttpResponse, HttpResponseRedirect
+from django.core.context_processors import csrf
+from forms import UserProfileForm
+from django.contrib.auth.decorators import login_required
+
+def index(request):
+
+    # Construct a dictionary to pass to the template engine as its context.
+    # Note the key boldmessage is the same as {{ boldmessage }} in the template!
+    context_dict = {'boldmessage': "User_name"}
+
+    # Return a rendered response to send to the client.
+    # We make use of the shortcut function to make our lives easier.
+    # Note that the first parameter is the template we wish to use.
+
+    return render(request, 'newstreet/index.html', context_dict)
+
+
+
+
+@login_required
+def user_profile(request):
+   if request.method == 'POST':
+          form = UserProfileForm(request.POST, instance = request.user.profile)
+          if form.is_valid():
+             form.save()
+             return HttpResponseRedirect('/accounts/loggedin')
+   else:
+      user = request.user
+      profile = request.profile
+      form = UserProfileForm(instance = profile)
+   
+
+   args = {}
+   args.update(csrf(request))
+   
+   args['form'] = form
+
+   return render_to_response('profile.html', args)
+#  try:
+   #     user_profile = UserProfile.objects.get(user=request.user)
+   # except UserProfile.DoesNotExist:
+    #    return HttpResponse("invalid user_profile!")
+
+ #   if request.method == "POST":
+    #    update_user_form = UserForm2(data=request.POST, instance=request.user)
+  #      update_profile_form = UserProfileForm(data=request.POST, instance=user_profile)
+
+      #  if update_user_form.is_valid() and 
+#         if   update_profile_form.is_valid():
+       #     user = update_user_form.save()
+   
+ #        profile = update_profile_form.save(commit=False)
+  #          profile.user = user
+
+   #         if 'picture' in request.FILES:
+    #            profile.picture = request.FILES['picture']
+
+  #          profile.save()
+#        else:
+ #           print(update_profile_form.errors)
+ #       else:
+ #           print(update_user_form.errors, update_profile_form.errors)
+   # else:
+ #       update_user_form = UserForm2(instance=request.user)
+   #     update_profile_form = UserProfileForm(instance=user_profile)
+
+    #return render(request,
+     #       'userprofile/update_user.html',
+         #   {'update_user_form': update_user_form,
+      #      {'update_profile_form': update_profile_form}
+       #     )"""
+
+
