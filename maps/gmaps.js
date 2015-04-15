@@ -1,25 +1,63 @@
 function initialize() {
   var mapOptions = {
-    zoom: 14,
+    zoom: 14
   };
-
+  var markers=[];
   var map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
+
+  var input = (
+      document.getElementById('search'));
+  /*map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);*/
+  var searchBox = new google.maps.places.SearchBox((input));
+  google.maps.event.addListener(searchBox, 'places_changed', function() {
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+    for (var i = 0, marker; marker = markers[i]; i++) {
+      marker.setMap(null);
+    }
+
+    // For each place, get the icon, place name, and location.
+    markers = [];
+    var marker = new google.maps.Marker({
+        map: map,
+        icon: image,
+        title: place.name,
+        position: place.geometry.location
+      });
+    markers.push(marker);
+   }); 
+
+
+  // Try HTML5 geolocation
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-    var pos = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+      var pos = new google.maps.LatLng(position.coords.latitude,
+                                       position.coords.longitude);
 
-    var infowindow = new google.maps.InfoWindow({
-      map: map,
-      position: pos,
-      content: 'Right now you are here'
-    });
+      var infowindow = new google.maps.InfoWindow({
+        map: map,
+        position: pos,
+        content: 'You are here'
+      });
 
-    map.setCenter(pos);
-    }, function() {
-      handleNoGeolocation(true);
+      map.setCenter(pos);
+    }, function(error) {
+      if(error.code==1)
+      {
+        var options = {
+        map: map,
+        position: new google.maps.LatLng(28, 77),
+        content:"Track now"
+      };
+      
+      var infowindow = new google.maps.InfoWindow(options);
+      map.setCenter(options.position);   
+      }   
     });
-    //this gives the latitude and longitude on clicking.
     google.maps.event.addListener(map, "click", function eventer (event) {
       var latitude = event.latLng.lat();
       var longitude = event.latLng.lng();
@@ -28,19 +66,9 @@ function initialize() {
   } else {
     // Browser doesn't support Geolocation
     handleNoGeolocation(false);
-   }
-  //update what if user doesnot allow to track the location
-    /*navigator.geolocation.getCurrentPosition(
-    function (error) { 
-      if (error.code == error.PERMISSION_DENIED)
-          console.log("you denied me :-(");
-          var infowindow = new google.maps.InfoWindow({
-          map: map,
-          position: new google.maps.LatLng(60,105),
-          content: 'Track now'
-    });*/
+  }
 }
-//when geolocation gives an error
+
 function handleNoGeolocation(errorFlag) {
   if (errorFlag) {
     var content = 'Error: The Geolocation service failed.';
@@ -56,13 +84,6 @@ function handleNoGeolocation(errorFlag) {
 
   var infowindow = new google.maps.InfoWindow(options);
   map.setCenter(options.position);
-  //this gives the latitude and longitude on clicking.
-  google.maps.event.addListener(map, "click", function eventer (event) {
-      var latitude = event.latLng.lat();
-      var longitude = event.latLng.lng();
-      console.log( latitude + ', ' + longitude );
-  });
 }
+
 google.maps.event.addDomListener(window, 'load', initialize);
-
-
