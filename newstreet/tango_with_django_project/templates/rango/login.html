@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Is anyone getting tired of repeatedly entering the header over and over?? -->
+        <title>Rango</title>
+         <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+   <!-- <link href="http://getbootstrap.com/examples/jumbotron/jumbotron.css" rel="stylesheet">-->
+
+    <style >
+       body {
+            
+            background: url('{{ STATIC_URL }}img/map8.JPG') ;
+            background-size: cover;
+            opacity: 0.9;
+        }
+         form{   
+            padding-top: 300pxpx;
+            padding-left: 50px;
+            }
+       
+        
+
+         
+
+
+    </style>
+    </head>
+
+    <body>
+        <h1>Login to Rango</h1>
+
+        <form id="login_form" method="post" action="/rango/login/">
+            {% csrf_token %}
+            Username: <input type="text" name="username" value="" size="50" />
+            <br />
+            Password: <input type="password" name="password" value="" size="50" />
+            <br />
+
+            <input type="submit" value="submit" />
+
+            <a href="/rango/reset/">Forgot Password</a>
+        </form>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+    </body>
+</html>
