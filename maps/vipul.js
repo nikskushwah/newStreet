@@ -17,7 +17,7 @@ function initialize() {
       return;
     }
     for (var i = 0, marker; marker = markers[i]; i++) {
-      marker.setMap(null);
+      //marker.setMap(null);
     }
 
     // For each place, get the icon, place name, and location.
