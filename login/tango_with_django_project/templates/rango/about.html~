@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+
+{% load staticfiles %} <!-- New line -->
+
+
+
+<html>
+    <head>
+        <title>Rango - {% block title %}How to Tango with Django!{% endblock %}</title>
+        <meta charset="utf-8" />
+    <meta name="author" content="Newstreet"/>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+   
+    <!-- attach CSS styles -->
+   <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="css/style.css" rel="stylesheet" />-->
+    <link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+    <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      
+     
+    }
+     
+    h1 { 
+     color: white;  }
+    
+     #home {
+      background: url('{{ STATIC_URL }}img/map2.JPG') no-repeat center center fixed;
+      display: table;
+      height: 100%;
+      position: relative;
+      width: 100%;
+      color: white;
+      font-size: 2.5em;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+     /* padded section */
+    .pad-section {
+      padding: 50px 0;
+    }
+    .pad-section img {
+      width: 100%;
+    }
+
+    /* vertical-centered text */
+    .text-vcenter {
+      display: table-cell;
+      text-align: center;
+      vertical-align: top;
+    }
+    .text-vcenter h1 {
+      font-size: 4.5em;
+      font-weight: 700;
+      margin: 0;
+      padding-top: 200px;
+    }
+
+    #about {
+      background-color: ;
+      
+    }
+    #sidebar-wrapper {
+    margin-right: -250px;
+    right: 0;
+    width: 250px;
+    background: rgb(51, 122, 183);
+    position: fixed;
+    height: 50%;
+    overflow-y: auto;
+    z-index: 1000;
+    transition: all 0.5s ease-in 0s;
+    -webkit-transition: all 0.5s ease-in 0s;
+    -moz-transition: all 0.5s ease-in 0s;
+    -ms-transition: all 0.5s ease-in 0s;
+    -o-transition: all 0.5s ease-in 0s;
+  }
+
+  .sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sidebar-nav li {
+    line-height: 50px;
+    text-indent: 20px;
+  }
+
+  .sidebar-nav li a {
+    color: #999999;
+    display: block;
+    text-decoration: none;
+  }
+  .sidebar-nav li a:link {
+    color: white;
+}
+  .sidebar-nav li a:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+    text-decoration: none;
+  }
+
+  .sidebar-nav li a:active, .sidebar-nav li a:focus {
+    text-decoration: none;
+  }
+
+  .sidebar-nav > .sidebar-brand {
+    height: 55px;
+    line-height: 55px;
+    font-size: 30px;
+  }
+
+  .sidebar-nav > .sidebar-brand a {
+    color: white;
+    font-size:30px;
+  }
+
+  .sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    font-size: 30px;
+    background: none;
+  }
+
+  #menu-toggle {
+    top: 0;
+    right: 0;
+    position: fixed;
+    z-index: 1;
+  }
+
+  #sidebar-wrapper.active {
+    right: 250px;
+    width: 250px;
+    transition: all 0.5s ease-out 0s;
+    -webkit-transition: all 0.5s ease-out 0s;
+    -moz-transition: all 0.5s ease-out 0s;
+    -ms-transition: all 0.5s ease-out 0s;
+    -o-transition: all 0.5s ease-out 0s;
+  }
+
+  .toggle {
+    margin: 5px 5px 0 0;
+  }
+</style>
+
+    </head>
+
+    <body>{% block body_block %}
+           
+            {% endblock %}
+          <!-- navigation panel -->
+  <!--<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <!--<div class="navbar-header">
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+        </button>
+        
+      </div>
+     <a class="navbar-brand" href="#">Newstreet</a>
+      <div class="collapse navbar-collapse" id="navbar-collapse-main">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>-->
+<a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="glyphicon glyphicon-bookmark"></i></a>
+ <div id="sidebar-wrapper" class="">
+  <ul class="sidebar-nav">
+    <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="glyphicon glyphicon-remove"></i></a>
+    <li class="sidebar-brand">
+      <a href="#">MENU</a>
+    </li>
+    <li>
+      <a href="#">Home </a>
+    </li>
+    <li>
+      <a href="rango/new/">About</a>
+    </li>
+    <li>
+      <a href="#contact">Contact</a>
+    </li>
+    <li>
+      
+               <li> <a href="/rango/login/" >Login</a></li>
+  </ul>
+</div>
+         <!-- {% if user.is_authenticated %}
+                <li><a href="/rango/restricted/">Restricted Page</a></li>
+                <li><a href="/rango/logout/">Logout</a></li>-->
+                
+            <!--{% else %}-->
+                
+               <!--{% endif %}
+
+                <li><a href="/rango/about/">About</a></li>-->
+          
+          
+          
+        
+     
+  
+   <!-- first section - Home -->
+<div id="home" class="home">
+  <div class="text-vcenter">
+    <h1>WELCOME TO NEWSTREET</h1>
+    <h3>News of every street in this world</h3>
+    <a href="/rango/register/" class="btn btn-success btn-lg">Sign Up</a>
+    <a href="#about" class="btn btn-default btn-lg" >Learn more</a>
+  </div>
+</div>
+<!-- /first section -->
+<!-- second section - About -->
+<<div id="about" class="pad-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <!--<img src="images/logo.png" alt="" />-->
+      </div>
+      <div class="col-sm-6 text-center">
+        <h2>Everyone can post it anywhere.</h2>
+        <p class="lead"> </p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /second section -->
+   
+        
+
+        
+
+        <!--<div>
+            <ul>
+            {% if user.is_authenticated %}
+                <li><a href="/rango/restricted/">Restricted Page</a></li>
+                <li><a href="/rango/logout/">Logout</a></li>
+                
+            {% else %}
+                <li><a href="/rango/register/">Register Here</a></li>
+                <li><a href="/rango/login/">Login</a></li>
+            {% endif %}-->
+
+               <!-- <li><a href="/rango/about/">About</a></li>-->
+            
+        
+        <!--<script src="http://www.prepbootstrap.com/Content/js/squad/jquery.min.js"></script> 
+    <script src="js/bootstrap.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <script>
+       $("#menu-close, #menu-toggle").click(function(e) {
+  e.preventDefault();
+  $("#sidebar-wrapper").toggleClass("active");
+  });
+
+  </script>
+    
+
+    </body>
+</html>
