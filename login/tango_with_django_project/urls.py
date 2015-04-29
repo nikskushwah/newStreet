@@ -3,6 +3,7 @@ from django.contrib import admin
 
 from django.conf import settings
 from django.conf.urls.static import static
+from rango import views
 
 urlpatterns = patterns('',
     # Examples:
@@ -17,6 +18,7 @@ urlpatterns = patterns('',
         name="password_change"), 
     (r'^accounts/password_change/done/$', 
         'django.contrib.auth.views.password_change_done'),
+    url(r'^update_user/$', views.update_user , name='update_user'),
     
 )
 

@@ -179,14 +179,11 @@ p{
 <div class="tab-content ">
   
         <div class="tab-pane active" id="tab_a">
+          <h4>Edit your Profile</h4>
+          <a href="/rango/update_user">Edit Here</a>
 
-          <form action="." method="POST">
-          {% csrf_token %}
-          <!--{{ user_form.as_p }}!-->
-          {{ profile_form.as_p }}
-          <!--<button>Update</button>!-->
-         </form>
 
+         
              
             
             
@@ -201,8 +198,8 @@ p{
                 ac turpis egestas.</p>
         </div>
         <div class="tab-pane" id="tab_d">
-             <h3>Popover Example</h3>
-  <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>
+             <h3>Log Out</h3>
+          <a href="/rango/logout">Log Out</a>
 </div>
 <script>
 $(document).ready(function(){

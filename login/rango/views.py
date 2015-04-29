@@ -204,8 +204,8 @@ def update_user(request):
             profile = update_profile_form.save(commit=False)
             profile.user = user
 
-            if 'picture' in request.FILES:
-                profile.picture = request.FILES['picture']
+            #if 'picture' in request.FILES:
+            #    profile.picture = request.FILES['picture']
 
             profile.save()
 
@@ -216,7 +216,7 @@ def update_user(request):
         update_profile_form = UserProfileForm(instance=user_profile)
 
     return render(request,
-            'userprofile/update_user.html',
+            'rango/update_user.html',
             {'update_user_form': update_user_form, 'update_profile_form': update_profile_form}
     )
 
