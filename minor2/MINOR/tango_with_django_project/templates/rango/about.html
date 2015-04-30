@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+
+{% load staticfiles %} <!-- New line -->
+
+<html>
+
+    <head>
+        <title>Rango</title>
+        
+    </head>
+
+    <body>
+        <h1>Rango says...</h1>
+        hello world!This is the about page!! <strong>{{ boldmessage }}</strong><br />
+    
+     {% block content %} 
+    <form class="form-addnews span8" id="news_form" method="post" action="/rango/newstreet/"
+              enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2 class="form-signin-heading">add news</h2>
+            <!-- Display each form here -->
+
+            {{news_form.as_p}}
+
+            
+
+            
+            <!-- Provide a button to click to submit the form. -->
+            <input class="btn btn-primary" type="submit" name="submit" value="Submit"/>
+        </form>
+     {% endblock %}
+
+    </body>
+
+</html>
