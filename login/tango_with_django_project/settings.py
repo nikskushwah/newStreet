@@ -25,10 +25,15 @@ TEMPLATE_DEBUG = True
 if DEBUG:
     EMAIL_HOST = 'localhost'
     EMAIL_PORT = 1025
-    EMAIL_HOST_USER = ''
+    EMAIL_HOST_USER = 'nikskushwah@gmail.com'
     EMAIL_HOST_PASSWORD = ''
-    EMAIL_USE_TLS = False
+
+    EMAIL_USE_TLS = True
     DEFAULT_FROM_EMAIL = 'testing@example.com'
+    ADMINS = (
+        ('nikskushwah', 'nikskushwah@gmail.com'), 
+    )
+MANAGERS = ADMINS
 ALLOWED_HOSTS = []
 
 
@@ -42,6 +47,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rango',
+    
     'django.contrib.sites',
 )
 

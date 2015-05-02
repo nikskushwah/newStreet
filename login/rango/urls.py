@@ -23,6 +23,12 @@ urlpatterns = patterns('',
         # Map the 'app.hello.success' view to the success message page.
         url(r'^success/$', views.success , name='success'),
         url(r'^update_user/$', views.update_user , name='update_user'),
+        (r'^contact/thankyou/', 'rango.views.thankyou'),
+        (r'^contact/', 'rango.views.contactview'),
+    
 )
+
+
+
 
      

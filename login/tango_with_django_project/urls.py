@@ -20,6 +20,9 @@ urlpatterns = patterns('',
         'django.contrib.auth.views.password_change_done'),
     url(r'^update_user/$', views.update_user , name='update_user'),
     
+    (r'^contact/thankyou/', 'rango.views.thankyou'),
+    (r'^contact/', 'rango.views.contactview'),
+    
 )
 
 

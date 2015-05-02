@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+<html>
+    <head>
+        <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+  </head>
+  <body>
+       
+ <div id="profile">
+  
+  <h1>Welcome, {{ user.get_username }}. Thanks for logging in. </h1>
+  <dl>
+    <dt>Username:</dt>
+    <dd>{{ user.get_username }}</dd>
+    <dt>Email:</dt>
+    <dd>{{ user.email }}</dd>
+    <dt>Website:</dt>
+    <dd>
+    <% if @user.url.present? %>
+      <%= link_to @user.url, @user.url %>
+    <% else %>
+      <span class="none">None given</span>
+    <% end %>
+    </dd>
+    <dt>Twitter:</dt>
+    <dd>
+    <% if @user.twitter_name.present? %>
+      <%= link_to @user.twitter_name, "http://twitter.com/#{@user.twitter_name}" %>
+    <% else %>
+      <span class="none">None given</span>
+    <% end %>
+    </dd>
+    <dt>Bio:</dt>
+    <dd>
+    <% if @user.bio.present? %>
+      <%=raw Redcarpet.new(@user.bio, :hard_wrap, :filter_html, :autolink).to_html %>
+    <% else %>
+      <span class="none">None given</span>
+    <% end %>
+    </dd>
+  </dl>
+</div>
+</body>
+<!--{% if user.is_authenticated %}
+    <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
+    <p> {{ user.email }}</p>
+{% else %}
+    <p>Welcome, new user. Please log in.</p>
+{% endif %}
+
+</body>
+<!DOCTYPE html>
+
+
+
+<html>
+    <head>
+        <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  </head>
+  <body>!-->
+       
+ 
