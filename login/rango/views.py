@@ -238,7 +238,7 @@ def contactview(request):
 
         if subject and message and from_email:
                 try:
-                    send_mail(subject, message, from_email, ['change@this.com'])
+                    send_mail(subject, message, from_email, ['nikskushwah@gmail.com'])
                 except BadHeaderError:
                         return HttpResponse('Invalid header found.')
                 return HttpResponseRedirect('/contact/thankyou/')
@@ -250,6 +250,39 @@ def contactview(request):
 
 def thankyou(request):
         return render_to_response('thankyou.html')
+
+
+
+
+@login_required
+def Change_Password(request, next='/'):
+   message = 'Change Password'
+   pForm = PasswordForm()
+
+   if request.method == 'POST':
+       if request.POST['submit'] == 'Change':
+           postDict = request.POST.copy()
+           pForm = LoginForm(postDict)
+           if pForm.is_valid():
+            uPass1 = request.POST['password']
+            uPass2 = request.POST['password1']
+            if uPass1 == uPass2:
+
+                user = get_object_or_404(Employee.objects.get(name__exact 
+= request.session['uid']))
+               #user = request.session['uid']
+                print 'User: ' + user
+                user.set_password(uPass1)
+                user.save()
+                return HttpResponseRedirect(next)
+            else:
+               message = 'Passwords dont match'
+               pForm = PasswordForm()
+
+   return render('rango/password_change.html', {
+                                                 'pForm': pForm,
+                                                 'message': message }, context_instance=RequestContext(request))
+
 
 
 

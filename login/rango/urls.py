@@ -14,6 +14,8 @@ urlpatterns = patterns('',
         url(r'^logout/$', views.user_logout, name='logout'),
         url(r'^reset/$', views.reset, name='reset'),
         url(r'^newstreet/$' , views.newstreet, name = 'newstreet'),
+        url(r'^password_change/$', views.Change_Password),
+
         
         # Map the 'app.hello.reset_confirm' view that wraps around built-in password
         # reset confirmation view, to the password reset confirmation links.
@@ -22,9 +24,9 @@ urlpatterns = patterns('',
         
         # Map the 'app.hello.success' view to the success message page.
         url(r'^success/$', views.success , name='success'),
-        url(r'^update_user/$', views.update_user , name='update_user'),
-        (r'^contact/thankyou/', 'rango.views.thankyou'),
-        (r'^contact/', 'rango.views.contactview'),
+        #url(r'^update_user/$', views.update_user , name='update_user'),
+        #(r'^contact/thankyou/', views.thankyou),
+        #(r'^contact/$', views.contactview ),
     
 )
 

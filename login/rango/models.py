@@ -48,4 +48,9 @@ class ContactForm(forms.Form):
     message = forms.CharField(widget=Textarea())
 
 
+class PasswordForm(forms.Form):
+
+    password = forms.CharField(max_length=20, widget=forms.PasswordInput())
+    password2 = forms.CharField(max_length=20, widget=forms.PasswordInput())
+
     

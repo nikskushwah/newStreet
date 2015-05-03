@@ -48,6 +48,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rango',
     
+
+    
     'django.contrib.sites',
 )
 
