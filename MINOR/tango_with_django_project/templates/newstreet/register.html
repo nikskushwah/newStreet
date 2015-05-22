@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Newstreet</title>
+         <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+        <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+         <link rel="icon" type="image/png" href= "https://cdn4.iconfinder.com/data/icons/miu-flat-social/60/location-128.png" sizes="96x96">
+        <style>
+        body{
+            background: url('{{ STATIC_URL }}img/map8.JPG') no-repeat center center fixed;
+        }
+            form{
+                padding-top: 300px;
+                padding-left: 75%;
+                opacity: 0.9;
+               
+                border-radius: 10px; 
+            }
+            .fieldWrapper{
+                font-size: 30px;
+                font: cursive;
+            }
+            .visible_fields{
+                
+            }
+            .form-signin{
+                width: 500px;
+    padding:25px;
+    
+    
+    margin: 240px;
+    margin-left: 30%;
+    margin-bottom: 30%;
+    background-color: orange;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+    color: #5d5d5d;
+  background: #f2f2f2;
+            }
+            #user_form{
+                font-size: 30px;
+                 font-family: "Times New Roman", Times, serif;
+                 
+
+            }
+            #as_p{
+                font-size: 30px;
+
+            }
+            img{
+                margin-left: 36%;
+            }
+            h2{
+                color: #5d5d5d;
+            }
+
+    </style>
+    </head>
+
+    <div class="container">
+        {% if registered %}
+        <p>Thank you for registering.</p>
+
+        <p><a href="/newstreet/login/">Login</a> when you are ready to rango.</p>
+        {% else %}
+        <form class="form-signin span8" id="user_form" method="post" action="/newstreet/register/"
+              enctype="multipart/form-data">
+              <img src="https://cdn4.iconfinder.com/data/icons/miu-flat-social/60/location-128.png" class="img-responsive" alt="" />
+            {% csrf_token %}
+            
+            <!-- Display each form here -->
+            
+            {% for field in user_form.visible_fields %}
+              <div class="fieldWrapper">
+                  <p>{{ field.errors }}<p>
+                   {{ field.initial }}
+                  {{ field.labels }}
+                  {{ field.help_text}} <br>
+                  {{ field }}</br>
+              </div>
+            {% endfor %}
+
+
+
+            
+
+            
+            <!-- Provide a button to click to submit the form. -->
+            <input class="btn btn-primary" type="submit" name="submit" value="Register"/>
+        </form>
+
+        {% endif %}
+
+
+         
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+   <!-- <body>
+        <h1>Register with Rango</h1>
+
+        {% if registered %}
+        <strong>thank you for registering!</strong>
+        <a href="/rango/">Return to the homepage.</a><br />
+        {% else %}
+        <strong>register here!</strong><br />
+        
+        <form id="user_form" method="post" action="/rango/register/"
+                enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <!-- Display each form. The as_p method wraps each element in a paragraph
+                 (<p>) element. This ensures each element appears on a new line,
+                 making everything look neater. -->
+            <!--{{ user_form.as_p }}
+            
+
+            <!-- Provide a button to click to submit the form. -->
+            <!--<input type="submit" name="submit" value="Register" />
+        </form>
+        {% endif %}
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    </body>
+</html>-->
