@@ -19,3 +19,20 @@ This  is “for the user” and “by the user” type application.
 
 This product is boon for those people who have high social life and wants to have information about every happening event around them. It visually presents the live event with the help of Google Maps.
 
+Screenshots:-
+
+![alt tag](https://github.com/nikskushwah/newStreet/blob/master/MINOR/tango_with_django_project/static/img/Main.png)
+
+![alt tag](https://github.com/nikskushwah/newStreet/blob/master/MINOR/tango_with_django_project/static/img/2.png)
+
+![alt tag](https://github.com/nikskushwah/newStreet/blob/master/MINOR/tango_with_django_project/static/img/3.png)
+
+![alt tag](https://github.com/nikskushwah/newStreet/blob/master/MINOR/tango_with_django_project/static/img/4.png)
+
+![alt tag](https://github.com/nikskushwah/newStreet/blob/master/MINOR/tango_with_django_project/static/img/5.png)
+
+![alt tag](https://github.com/nikskushwah/newStreet/blob/master/MINOR/tango_with_django_project/static/img/6.png)
+
+![alt tag](https://github.com/nikskushwah/newStreet/blob/master/MINOR/tango_with_django_project/static/img/7.png)
+
+![alt tag](https://github.com/nikskushwah/newStreet/blob/master/MINOR/tango_with_django_project/static/img/8.png)
